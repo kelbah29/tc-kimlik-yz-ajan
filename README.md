@@ -11,6 +11,8 @@ Bir Claude Code ajanını terminalin dışına çıkarıp gerçek dünya iletiş
 | **tc-kimlik-ajan** | Email (+telefon hazır altyapısı) | Inkbox'ın resmi [Claude Code bridge](https://github.com/inkbox-ai/claude-code-plugin) plugin'i — gelen mail webhook'unu gerçek bir Claude Code oturumuna (Claude Agent SDK, tam tool erişimiyle) yönlendiriyor, riskli işlemleri email üzerinden onaya soruyor |
 | **tc-kimlik-web** | Website | Bu repodaki minimal TypeScript sunucusu — Inkbox tunnel üzerinden `https://tc-kimlik-web.inkboxwire.com`'da yayında, her mesajı `claude -p` (headless, **tool'lar kapalı**) ile işliyor |
 
+Ayrıca `landing/` altında statik bir vitrin sayfası var, Vercel'de yayında: **https://tc-kimlik-yz-ajan.vercel.app**. Bu sayfa sadece projeyi tanıtıp yukarıdaki canlı chat'e ve GitHub reposuna link veriyor — chat mantığının kendisi Vercel'de çalışmıyor (bkz. aşağıdaki not).
+
 İki ayrı identity kullanılmasının nedeni: bir identity'nin tek bir tunnel'ı var, ve email/telefon bridge'i o tunneli kendi webhook sunucusuna bağlıyor. Website için ayrı bir public hostname gerektiğinden ikinci bir identity daha temiz bir çözüm.
 
 **Güvenlik notu:** Website chat endpoint'i herkese açık olduğu için oradaki Claude Code çağrıları `--tools ""` ile çalışıyor — hiçbir dosya/Bash/web erişimi yok, sadece konuşma. Email/telefon bridge'i tam tool erişimine sahip ama riskli her işlemi (Bash, Write, Edit) email/SMS üzerinden insana onaya soruyor (bridge'in kendi escalation mekanizması).
