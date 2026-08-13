@@ -159,9 +159,9 @@
         <p>tc-kimlik-web.inkboxwire.com — bu sayfanın linklediği canlı chat, tool erişimi kapalı headless Claude Code.</p>
       </div>
       <div class="card">
-        <div class="status pending-text"><span class="dot pending"></span>Ertelendi</div>
+        <div class="status pending-text"><span class="dot pending"></span>Kuruldu, test ediliyor</div>
         <h3>Telefon</h3>
-        <p>Dedike numara Inkbox'ın ücretli planını gerektiriyor — altyapı hazır, karar bekliyor.</p>
+        <p><a href="tel:+14422461168" style="color:inherit">+1 442 246 1168</a> — Vapi'nin ücretsiz numarası, aynı Claude Code köprüsüne (custom LLM) bağlı.</p>
       </div>
     </div>
   </section>
@@ -174,8 +174,11 @@
       riskli işlemler (Bash, dosya yazma) email üzerinden insana onaya soruluyor.
       <code>tc-kimlik-web</code> ise bu repodaki minimal bir TypeScript sunucusu — kendi Inkbox tunnel'ında
       yayında, her mesajda <code>claude -p --tools ""</code> çağırıyor (public olduğu için dosya/komut
-      erişimi tamamen kapalı). Bu sayfa statik bir vitrin; chat mantığının kendisi Vercel'de değil,
-      yukarıdaki Inkbox tunnel adresinde çalışıyor.
+      erişimi tamamen kapalı). Telefon için <strong>Vapi</strong>'nin ücretsiz numarası aynı sunucudaki
+      <code>/chat/completions</code> route'una (OpenAI-uyumlu, paylaşılan bir sırla korunan) "custom LLM"
+      olarak bağlı — STT/TTS Vapi'de, cevap metni yine gerçek <code>claude -p</code> çağrısından geliyor.
+      Bu sayfa statik bir vitrin; chat mantığının kendisi Vercel'de değil, yukarıdaki Inkbox tunnel
+      adresinde çalışıyor.
     </div>
   </section>
 

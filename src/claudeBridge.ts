@@ -62,3 +62,13 @@ export async function askClaude(conversationKey: string, message: string): Promi
   setSessionId(conversationKey, result.session_id);
   return result.result;
 }
+
+/**
+ * Stateless one-shot query — no session persistence. Used by the Vapi phone
+ * bridge, which resends the full call transcript as `prompt` on every turn,
+ * so there's nothing to resume.
+ */
+export async function askClaudeOnce(prompt: string): Promise<string> {
+  const result = await runClaude(prompt);
+  return result.result;
+}
