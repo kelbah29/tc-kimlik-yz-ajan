@@ -141,9 +141,24 @@
 
   <div class="actions">
     <a class="btn primary" href="https://tc-kimlik-web.inkboxwire.com" target="_blank" rel="noopener">Canlı chat'i dene →</a>
-    <a class="btn secondary" href="mailto:tc-kimlik-ajan@inkboxmail.com">Email gönder</a>
+    <a class="btn secondary" href="mailto:tc-kimlik-ajan@inkboxmail.com" id="email-btn">Email gönder</a>
+    <a class="btn secondary" href="tel:+14422461168">Ara: +1 442 246 1168</a>
     <a class="btn secondary" href="https://github.com/kelbah29/tc-kimlik-yz-ajan" target="_blank" rel="noopener">GitHub reposu</a>
   </div>
+  <script>
+    document.getElementById('email-btn').addEventListener('click', function (e) {
+      var address = 'tc-kimlik-ajan@inkboxmail.com';
+      var original = this.textContent;
+      var el = this;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(address).then(function () {
+          el.textContent = 'Kopyalandı: ' + address;
+          setTimeout(function () { el.textContent = original; }, 2500);
+        });
+      }
+      // mailto: href still fires normally if a mail client is configured
+    });
+  </script>
 
   <section>
     <h2>Kanal durumu</h2>
